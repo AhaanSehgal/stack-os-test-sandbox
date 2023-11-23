@@ -4,7 +4,6 @@ import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
-import DesktopLayout from '@/components/common/DesktopLayout';
 import { AppStoreActions } from '@/redux/app-store';
 import { useSelector } from '@/redux/hooks';
 
@@ -36,9 +35,7 @@ const App: NextPage = () => {
                 <meta name="description" content="StackOS App description" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <DesktopLayout>
            
-            </DesktopLayout>
         </div>
     );
 };
