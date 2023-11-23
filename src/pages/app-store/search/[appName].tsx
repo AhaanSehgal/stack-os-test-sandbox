@@ -5,7 +5,6 @@ import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import DesktopLayout from '@/components/common/DesktopLayout';
-import AppDetailsScreen from '@/components/common/app-store/AppDetailsScreen';
 import { AppStoreActions } from '@/redux/app-store';
 import { useSelector } from '@/redux/hooks';
 
@@ -38,7 +37,7 @@ const App: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <DesktopLayout>
-                <AppDetailsScreen />
+           
             </DesktopLayout>
         </div>
     );
