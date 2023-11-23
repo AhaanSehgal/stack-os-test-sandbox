@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter';
+    overflow: unset !important;
+    padding-right: 0 !important;
+  }
+
+  .spinner-color {
+    background: conic-gradient(#a7a7a7, #aaff00);
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    @apply w-[6px];
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    @apply rounded-full;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-stk-grey-400 hover:bg-stk-grey-200 rounded-full duration-300;
+  }
+
+  .toast-body {
+    @apply flex ml-2 mr-4 mt-2 mb-3 items-center cursor-auto;
+  }
+
+  .toast-body > * {
+    /* @apply max-w-[14rem] overflow-hidden max-h-[12rem]; */
+    display: -webkit-box;
+    max-width: 14rem;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.__react_component_tooltip.show {
+  opacity: 1 !important;
+}
+.blocks {
+  display: flex;
+  gap: 40px;
+  /* height: 600px; */
+  /* overflow: auto; */
+  justify-content: center;
+  /* margin: auto; */
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.form-blocks {
+  display: flex;
+  border-radius: 12px;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0px 0px 5px 4px #a9ff2f42;
+  padding: 12px;
+  /* margin: 10px; */
+  height: 520px;
+  overflow: auto;
+  width: 48%;
+}
+.subscribe-form-data h3 {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+/* .subscribe-form-data {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+  gap: 6px;
+} */
+.subscribe-form-data label,
+p,
+h2 {
+  color: white;
+  /* padding: 8px 0px; */
+}
+/* .subscribe-form-data input,
+select {
+  padding: 4px;
+} */
+.subnetof-nft {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+}
+.container-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  /* font-size: 22px; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 2px;
+}
+
+/* On mouse-over, add a grey background color */
+.container-checkbox:hover input ~ .checkmark {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 2px;
+}
+/* When the checkbox is checked, add a blue background */
+.container-checkbox input:checked ~ .checkmark {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 2px;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+.new-validation {
+  border: 2px solid rgb(209, 64, 64);
+}
+/* Style the checkmark/indicator */
+.container-checkbox .checkmark:after {
+  left: 7px;
+  top: 0px;
+  width: 6px;
+  height: 16px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* -------------------- Accordion styles -------------------- */
+.AccordionItem {
+  overflow: hidden;
+  margin-top: 1px;
+}
+.AccordionItem:first-child {
+  margin-top: 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.AccordionItem:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.AccordionItem:focus-within {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 2px var(--mauve12);
+}
+.AccordionContent {
+  overflow: hidden;
+}
+.AccordionContent[data-state='open'] {
+  animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+.AccordionContent[data-state='closed'] {
+  animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.AccordionChevron {
+  color: white;
+  transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+.AccordionTrigger[data-state='open'] > .AccordionChevron {
+  transform: rotate(180deg);
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
