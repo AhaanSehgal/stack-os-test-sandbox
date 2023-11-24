@@ -35,7 +35,7 @@
         "@reduxjs/toolkit": "1.8.2",
         "@stitches/react": "1.2.7",
         "@tria-sdk/authenticate": "^1.2.82",
-        "@tria-sdk/connect": "1.1.13",
+        "@tria-sdk/connect": "1.1.20",
         "@types/bn.js": "5.1.1",
         "apache-md5": "1.1.8",
         "axios": "0.27.2",
