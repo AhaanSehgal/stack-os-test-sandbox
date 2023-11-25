@@ -30,7 +30,7 @@ import TriaLogin from "@/components/tria/TriaLogin"
 const Login: NextPage = () => {
     const { t } = useTranslation();
     //@ts-ignore
-    const { globalData } = useTriaConnector({ walletUrl: "https://auth.tria.so" });
+    const { globalData } = useTriaConnector({authUrl:"https://auth.tria.so" ,walletUrl: "https://wallet.tria.so" });
     const { disconnect } = useDisconnect();
     const [loginUnlinkedModalOpen, setLoginUnlinkedModalOpen] = useState(false);
     const [loginUnlinkedLoading, setLoginUnlinkedLoading] = useState(false);
