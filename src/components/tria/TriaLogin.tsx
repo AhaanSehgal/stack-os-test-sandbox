@@ -8,7 +8,7 @@ const Application = dynamic(
 
 const TriaLogin = () => {
     return (
-        <Application dappName={"Stack OS"} logo="https://www.stackos.io/stackos-logo.svg" uiType={"yes"} primaryColor="#AAFF00" dappDomain={window?.parent.origin}  />
+        <Application dappName={"Stack OS"} logo="https://www.stackos.io/stackos-logo.svg" uiType={"yes"} primaryColor="#AAFF00" dappDomain={window?.parent.origin} defaultChain=“FUSE” supportedChains={[“FUSE”, “POLYGON”]} />
     )
 }
 
