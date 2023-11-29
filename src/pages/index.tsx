@@ -120,6 +120,12 @@ const Login: NextPage = () => {
     //     },
     //   });
 
+    const callSign = async () =>{
+        const data = await signMessage()
+        console.log('awaited data', data)    
+    }
+    
+
 
 
 
@@ -219,7 +225,7 @@ const Login: NextPage = () => {
                             />
                             <button
                                 className=" mb-16 text-white bg-blue-500  px-4 py-2 rounded-md mr-2"
-                                onClick={() => signMessage()}
+                                onClick={() => callSign()}
                             >
                                 Sign Message
                             </button>
