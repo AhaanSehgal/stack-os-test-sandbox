@@ -8,7 +8,7 @@ import { useDisconnect } from 'wagmi';
 import LoginComponent from '@/components/login/LoginComponent';
 import { Button, LoadingSpinner, Modal } from '@/components/common';
 import dynamic from 'next/dynamic'
-import { useTriaConnector, useSignMessage, useSendTransaction, useContractWrite } from "@tria-sdk/connect";
+import { useTriaConnector, useSignMessage, useSendTransaction, useContractWrite, signMessage } from "@tria-sdk/connect";
 import TriaLogin from "@/components/tria/TriaLogin"
 // import { useSignMessage } from "@tria-sdk/authenticate";
 
@@ -55,16 +55,16 @@ const Login: NextPage = () => {
     //     }
     // }, [])
 
-    const {
-        data: signature,
-        isError,
-        isLoading,
-        isSuccess,
-        signMessage,
-      } = useSignMessage({
-        message,
-        chainName,
-      });
+    // const {
+    //     data: signature,
+    //     isError,
+    //     isLoading,
+    //     isSuccess,
+    //     signMessage,
+    //   } = useSignMessage({
+    //     message,
+    //     chainName,
+    //   });
     
       const { data, sendTransaction } = useSendTransaction({
         amount,
@@ -125,9 +125,6 @@ const Login: NextPage = () => {
         console.log('awaited data', data)    
     }
     
-
-
-
 
     // useEffect(() => {
     //     loadCustomHook().then(useSignMessage => setUseCustomHook(useSignMessage({
