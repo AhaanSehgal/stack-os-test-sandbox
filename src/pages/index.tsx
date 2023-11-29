@@ -121,7 +121,7 @@ const Login: NextPage = () => {
     //   });
 
     const callSign = async () =>{
-        const data = await signMessage()
+        const data = await signMessage({message: message, chainName: chainName})
         console.log('awaited data', data)    
     }
     
