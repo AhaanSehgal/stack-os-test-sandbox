@@ -204,7 +204,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <link href="/assets/fontawesome/css/brands.css" rel="stylesheet" />
                  <meta
           http-equiv="origin-trial"
-          content="AuKPiAL9j7dnKErhPd2QJrKM+DkZ0+fE2WkSex88NC+hbz2cj7ZmiGW5Aus73XdeSO8URWIxwcBBN3bxifaUswEAAACReyJvcmlnaW4iOiJodHRwczovL3N0YWNrLW9zLXRlc3Qtc2FuZGJveC52ZXJjZWwuYXBwOjQ0MyIsImZlYXR1cmUiOiJEaXNhYmxlVGhpcmRQYXJ0eVN0b3JhZ2VQYXJ0aXRpb25pbmciLCJleHBpcnkiOjE3MjU0MDc5OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="
+          content="AnrU0+WJ9VPtF7HwQJYOsbXRvErZF40SAfZbnJPwBWZlZT77I+xQ8ejjfRAHTlZ+5lOlGahdEzwyiz/O6E1pFQQAAACVeyJvcmlnaW4iOiJodHRwczovL3N0YWNrLW9zLW5ldy1mbG93LXRlc3RpbmcudmVyY2VsLmFwcDo0NDMiLCJmZWF0dXJlIjoiRGlzYWJsZVRoaXJkUGFydHlTdG9yYWdlUGFydGl0aW9uaW5nIiwiZXhwaXJ5IjoxNzI1NDA3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0="
     />
             </Head>
             <WagmiConfig client={client}>
