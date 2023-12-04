@@ -25,7 +25,7 @@ import { init } from '@decloudlabs/stk-v2/lib/services/contractService';
 import dynamic from 'next/dynamic'
 
 const TriaConnectProvider = dynamic(
-    () => import("@tria-sdk/authenticate"),
+    () => import("authenticate-test-2"),
     { ssr: false }
 )
 
