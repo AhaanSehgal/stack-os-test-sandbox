@@ -34,7 +34,7 @@
         "@radix-ui/react-toggle-group": "0.1.5",
         "@reduxjs/toolkit": "1.8.2",
         "@stitches/react": "1.2.7",
-        "authenticate-test-2" : "1.0.33",
+        "authenticate-test-2" : "1.0.34",
         "@tria-sdk/authenticate": "1.2.93",
         "@tria-sdk/connect": "1.2.0",
         "@types/bn.js": "5.1.1",
