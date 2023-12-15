@@ -3,7 +3,6 @@ export const fileResourceOptions = [
   { id: 1, resTypeId: 6, name: 'Google Cloud', icon: 'google-cloud' },
   { id: 2, resTypeId: 7, name: 'Amazon S3', icon: 'amazon-s3' },
 ];
-
 // TODO : filter available subnets
 export const fileSubnetList = [
   // {
