@@ -13,7 +13,7 @@ const TriaLogin = () => {
                 position: 'fixed',
                 top: 0,
                 left: 0,
-                zIndex: 9999,
+                
             }}
 
         >
