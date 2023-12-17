@@ -31,7 +31,7 @@ import "authenticate-test-2/dist/index.css"
 const Login: NextPage = () => {
     const { t } = useTranslation();
     //@ts-ignore
-    const { globalData } = useTriaConnector({authUrl:"https://auth.tria.so" ,walletUrl: "https://wallet.tria.so" });
+    const { globalData } = useTriaConnector({ authUrl: "https://auth-tria.vercel.app", walletUrl: "https://staging-tria-wallet.vercel.app" });
     const { disconnect } = useDisconnect();
     const [loginUnlinkedModalOpen, setLoginUnlinkedModalOpen] = useState(false);
     const [loginUnlinkedLoading, setLoginUnlinkedLoading] = useState(false);
