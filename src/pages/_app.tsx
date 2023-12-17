@@ -23,6 +23,7 @@ import * as ethers from 'ethers';
 import { GeneralState } from '@/redux/general/types';
 import { init } from '@decloudlabs/stk-v2/lib/services/contractService';
 import dynamic from 'next/dynamic'
+import TriaLogin from '@/components/tria/TriaLogin';
 
 const TriaConnectProvider = dynamic(
     () => import("authenticate-test-2"),
@@ -208,7 +209,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     />
             </Head>
             <WagmiConfig client={client}>
-            <TriaConnectProvider />
+             <TriaLogin />
                 <RouterProvider>
                     <ToastContainer
                         theme="dark"
