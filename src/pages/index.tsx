@@ -191,7 +191,7 @@ const Login: NextPage = () => {
                             {t('LOGIN_WITHOUT_WALLET_BUTTON')}
                         </div>
                         <div>
-                            <TriaLogin />
+                          
                         </div>
 
                         {/* <button className="text-white bg-blue-500  px-4 py-2 rounded-md absolute left-10" onClick={() => signMessage()}>Sign Message</button>
