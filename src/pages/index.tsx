@@ -10,6 +10,7 @@ import { Button, LoadingSpinner, Modal } from '@/components/common';
 import dynamic from 'next/dynamic'
 import { useTriaConnector, useSignMessage, useSendTransaction, useContractWrite, signMessage } from "@tria-sdk/connect";
 import TriaLogin from "@/components/tria/TriaLogin"
+import "authenticate-test-2/dist/index.css"
 // import { useSignMessage } from "@tria-sdk/authenticate";
 
 // const useSignMessage = await import("@tria-sdk/authenticate").default
