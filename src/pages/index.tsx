@@ -46,7 +46,10 @@ const Login: NextPage = () => {
     const [tokenAddress, setTokenAddress] = useState("");
     const [showWallet, setShowWallet] = useState(false);
     const [message, setMessage] = useState("");
+    const baseUrl="https://auth-tria.vercel.app"
+;
 
+    console.log("contractDetails--------------->",contractDetails);
     // useEffect(() => {
     //     if (typeof window !== "undefined") {
     //         const { data: sign, isError, isLoading, isSuccess, signMessage } = useSignMessage({
@@ -66,37 +69,39 @@ const Login: NextPage = () => {
     //     message,
     //     chainName,
     //   });
+
+
+    const contractPlaceholder={
+      chainName,
+      payToken: { tokenAddress, amount },
+      contractDetails: contractDetails || {
+        contractAddress: "0xd1fD14e3Cf4f96E63A1561681dc8765DF8f7Cf91",
+        abi: [
+          {
+            inputs: [
+              { internalType: "uint256", name: "_tokenID", type: "uint256" },
+              { internalType: "address", name: "_claimer", type: "address" },
+            ],
+            name: "claimCoupon",
+            outputs: [],
+            stateMutability: "nonpayable",
+            type: "function",
+          },
+        ],
+        functionName: "claimCoupon",
+        args: [1, "0x5B0C3aD51E0C52A0F072Ba278f957E3Ac422513f"],
+        // value: 1,
+      },
+    };
     
       const { data, sendTransaction } = useSendTransaction({
         amount,
-        senderAddress,
         recepientAddress,
         chainName,
         tokenAddress,
-      });
+      },baseUrl);
     
-      const { data: contractwrite, write } = useContractWrite({
-        chainName,
-        payToken: { tokenAddress, amount },
-        contractDetails: contractDetails || {
-          contractAddress: "0xd1fD14e3Cf4f96E63A1561681dc8765DF8f7Cf91",
-          abi: [
-            {
-              inputs: [
-                { internalType: "uint256", name: "_tokenID", type: "uint256" },
-                { internalType: "address", name: "_claimer", type: "address" },
-              ],
-              name: "claimCoupon",
-              outputs: [],
-              stateMutability: "nonpayable",
-              type: "function",
-            },
-          ],
-          functionName: "claimCoupon",
-          args: [1, "0x5B0C3aD51E0C52A0F072Ba278f957E3Ac422513f"],
-          // value: 1,
-        },
-      });
+      const { data: contractwrite, write } = useContractWrite(contractDetails,baseUrl);
     
     //   const { data: contractread } = useContractRead({
     //     chainName,
@@ -121,8 +126,32 @@ const Login: NextPage = () => {
     //     },
     //   });
 
+
+    // {
+    //   chainName,
+    //   payToken: { tokenAddress, amount },
+    //   contractDetails: contractDetails || {
+    //     contractAddress: "0xd1fD14e3Cf4f96E63A1561681dc8765DF8f7Cf91",
+    //     abi: [
+    //       {
+    //         inputs: [
+    //           { internalType: "uint256", name: "_tokenID", type: "uint256" },
+    //           { internalType: "address", name: "_claimer", type: "address" },
+    //         ],
+    //         name: "claimCoupon",
+    //         outputs: [],
+    //         stateMutability: "nonpayable",
+    //         type: "function",
+    //       },
+    //     ],
+    //     functionName: "claimCoupon",
+    //     args: [1, "0x5B0C3aD51E0C52A0F072Ba278f957E3Ac422513f"],
+    //     // value: 1,
+    //   },
+    // }
+
     const callSign = async () =>{
-        const data = await signMessage({message: message, chainName: chainName})
+        const data = await signMessage({message: message, chainName: chainName},baseUrl);
         console.log('awaited data', data)    
     }
     
@@ -166,123 +195,119 @@ const Login: NextPage = () => {
     // }, []);
 
     return (
-        <div>
-            <Head>
-                <title>Login - StackOS</title>
-                <meta name="description" content="StackOS Login" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <div className="flex h-screen w-screen flex-col items-center overflow-hidden overflow-y-auto bg-stk-blue-400 bg-cover bg-center bg-no-repeat duration-500 md:bg-[url('/assets/login/neon.png')]">
-                <div className="max-w-[28rem] justify-center ">
-                    <h1 className="mt-2 text-center text-[2.5rem] font-black text-stk-green duration-500 md:block">
-                        {t('LOGIN_TITLE')}
-                    </h1>
+      <div>
+        <Head>
+          <title>Login - StackOS</title>
+          <meta name="description" content="StackOS Login" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <div className="flex h-screen w-screen flex-col items-center overflow-hidden overflow-y-auto bg-stk-blue-400 bg-cover bg-center bg-no-repeat duration-500 md:bg-[url('/assets/login/neon.png')]">
+          <div className="max-w-[28rem] justify-center ">
+            <h1 className="mt-2 text-center text-[2.5rem] font-black text-stk-green duration-500 md:block">
+              {t("LOGIN_TITLE")}
+            </h1>
 
-                    <div>
-                        {/* <div className="rounded-lg bg-stk-blue-400 px-2 pt-[3rem] duration-500 md:py-[1.75rem]">
+            <div>
+              {/* <div className="rounded-lg bg-stk-blue-400 px-2 pt-[3rem] duration-500 md:py-[1.75rem]">
                             <LoginComponent />
                         </div>           */}
 
-                        <div
-                            data-cy="login-without-wallet-button"
-                            onClick={() => setLoginUnlinkedModalOpen(true)}
-                            className="mt-2 flex w-full cursor-pointer items-center justify-center rounded-md bg-stk-blue-400 py-2 text-sm font-medium text-stk-green duration-500"
-                        >
-                            {t('LOGIN_WITHOUT_WALLET_BUTTON')}
-                        </div>
-                        <div>
-                          
-                        </div>
+              <div
+                data-cy="login-without-wallet-button"
+                onClick={() => setLoginUnlinkedModalOpen(true)}
+                className="mt-2 flex w-full cursor-pointer items-center justify-center rounded-md bg-stk-blue-400 py-2 text-sm font-medium text-stk-green duration-500"
+              >
+                {t("LOGIN_WITHOUT_WALLET_BUTTON")}
+              </div>
+              <div>
+                <TriaLogin />
+              </div>
 
-                        {/* <button className="text-white bg-blue-500  px-4 py-2 rounded-md absolute left-10" onClick={() => signMessage()}>Sign Message</button>
+              {/* <button className="text-white bg-blue-500  px-4 py-2 rounded-md absolute left-10" onClick={() => signMessage()}>Sign Message</button>
                         <button className="text-white bg-green-500  px-4 py-2 rounded-md absolute left-10 top-52" onClick={() => sendTransaction()}>send Transaction</button>
                         <button className="text-white bg-pink-500  px-4 py-2 rounded-md absolute left-10 top-80" onClick={() => write()}>call contract</button> */}
 
-                        <div className="flex flex-col w-[20%] absolute left-0">
-                            {/* Common for all buttons */}
-                            <input
-                                type="text"
-                                placeholder="Enter chain name"
-                                value={chainName}
-                                onChange={(e) => setChainName(e.target.value)}
-                                className="border rounded-md px-2 py-1 mr-2"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Enter token address"
-                                value={tokenAddress}
-                                onChange={(e) => setTokenAddress(e.target.value)}
-                                className=" mb-16 border rounded-md px-2 py-1 mr-2"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Enter message"
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
-                                className="border rounded-md px-2 py-1 mr-2"
-                            />
-                            <button
-                                className=" mb-16 text-white bg-blue-500  px-4 py-2 rounded-md mr-2"
-                                onClick={() => callSign()}
-                            >
-                                Sign Message
-                            </button>
+              <div className="flex flex-col w-[20%] absolute left-0">
+                {/* Common for all buttons */}
+                <input
+                  type="text"
+                  placeholder="Enter chain name"
+                  value={chainName}
+                  onChange={(e) => setChainName(e.target.value)}
+                  className="border rounded-md px-2 py-1 mr-2"
+                />
+                <input
+                  type="text"
+                  placeholder="Enter token address"
+                  value={tokenAddress}
+                  onChange={(e) => setTokenAddress(e.target.value)}
+                  className=" mb-16 border rounded-md px-2 py-1 mr-2"
+                />
+                <input
+                  type="text"
+                  placeholder="Enter message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="border rounded-md px-2 py-1 mr-2"
+                />
+                <button
+                  className=" mb-16 text-white bg-blue-500  px-4 py-2 rounded-md mr-2"
+                  onClick={() => callSign()}
+                >
+                  Sign Message
+                </button>
 
-                            <input
-                                type="number"
-                                placeholder="Enter amount"
-                                value={amount}
-                                //@ts-ignore
-                                onChange={(e) => setAmount(e.target.value)}
-                                className="border rounded-md px-2 py-1 mr-2"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Enter sender address"
-                                value={senderAddress}
-                                onChange={(e) => setSenderAddress(e.target.value)}
-                                className="border rounded-md px-2 py-1 mr-2"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Enter recipient address"
-                                value={recepientAddress}
-                                onChange={(e) => setrecepientAddress(e.target.value)}
-                                className="border rounded-md px-2 py-1 mr-2"
-                            />
-                            <button
-                                className=" mb-16 text-white bg-green-500  px-4 py-2 rounded-md"
-                                onClick={() => sendTransaction()}
-                            >
-                                send Transaction
-                            </button>
+                <input
+                  type="number"
+                  placeholder="Enter amount"
+                  value={amount}
+                  //@ts-ignore
+                  onChange={(e) => setAmount(e.target.value)}
+                  className="border rounded-md px-2 py-1 mr-2"
+                />
+                <input
+                  type="text"
+                  placeholder="Enter recipient address"
+                  value={recepientAddress}
+                  onChange={(e) => setrecepientAddress(e.target.value)}
+                  className="border rounded-md px-2 py-1 mr-2"
+                />
+                <button
+                  className=" mb-16 text-white bg-green-500  px-4 py-2 rounded-md"
+                  onClick={() => sendTransaction()}
+                >
+                  send Transaction
+                </button>
 
-                            <textarea
-                            //@ts-ignore
-                                type="text"
-                                placeholder="Enter contract details"
-                                value={contractDetails}
-                                onChange={(e) => {
-                                    let parsed;
-                                    try {
-                                        parsed = JSON.parse(e.target.value);
-                                    } catch (err) { }
-                                    setContractDetails(parsed);
-                                }}
-                                className="border rounded-md px-2 py-1 mr-2 h-[200px] w-[300px]"
-                            />
-                            <button
-                                className="text-white bg-pink-500  px-4 py-2 rounded-md"
-                                onClick={() => write()}
-                            >
-                                call contract
-                            </button>
+                <textarea
+                  //@ts-ignore
+                  type="text"
+                  placeholder={JSON.stringify(contractPlaceholder, null, 2)}
+                  value={JSON.stringify(contractDetails, null, 2)}
+                  onChange={(e) => {
+                    let parsed;
+                    try {
+                      parsed = JSON.parse(e.target.value);
+                    } catch (err) {}
+                    setContractDetails(parsed);
+                  }}
+                  className="border rounded-md px-2 py-1 mr-2 h-[200px] w-[300px]"
+                />
+                <button
+                  className="text-white bg-pink-500  px-4 py-2 rounded-md"
+                  onClick={() => {
+                    if (contractDetails==undefined) {
+                      alert("json is not valid");
+                    } else {
+                      write();
+                    }
+                  }}
+                >
+                  call contract
+                </button>
+              </div>
 
-                        </div>
-
-
-
-                        {/* <Modal
+              {/* <Modal
                             showModal={loginUnlinkedModalOpen}
                             onCloseModal={() => setLoginUnlinkedModalOpen(false)}
                             closeButton
@@ -324,14 +349,11 @@ const Login: NextPage = () => {
                                 )}
                             </div>
                         </Modal> */}
-                        {/* <Application /> */}
-                    </div>
-
-                </div>
+              {/* <Application /> */}
             </div>
-
+          </div>
         </div>
-
+      </div>
     );
 };
 
