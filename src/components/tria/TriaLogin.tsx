@@ -28,6 +28,7 @@ const TriaLogin = () => {
                 supportedChains={['FUSE', 'POLYGON', 'MUMBAI']}
                 buttonPosition={{ x: 200, y: 200 }}
                 darkMode={true}
+                clientId="7db16867-55c4-4abf-90d9-0f523e29b7c3"
             />
         </div>
     )
