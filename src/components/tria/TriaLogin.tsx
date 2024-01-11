@@ -2,7 +2,7 @@
 import dynamic from 'next/dynamic'
 
 const Application = dynamic(
-    () => import("authenticate-test-2"),
+    () => import("@tria-sdk/authenticate"),
     { ssr: false }
 )
 
